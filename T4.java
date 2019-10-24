@@ -45,7 +45,9 @@ public class T4 {
 		}
 		if (arr.length == 1 && arr[0] != n) {
 			exists = false;	
-			return (arr[0]<n)?1:-1;
+			if(arr[0] > n) return 1;
+			return 0;
+			// return (arr[0]<n)?1:-1;
 		}
 		int half = (arr.length / 2);
 		if (arr[half] == n){
@@ -62,11 +64,11 @@ public class T4 {
 				return -1 * (1 - iH1);
 		}
 		if (arr[half] < n) {
-			int[] h2 = Arrays.copyOfRange(arr, half + 1, arr.length);
+			int[] h2 = Arrays.copyOfRange(arr, half , arr.length);
 			int iH2 = indexOf(h2, n);
 
 			if (exists)
-				return half + iH2 + 1;
+				return half + iH2;
 			else
 				return -1 * (half - iH2 + 1);
 		}
@@ -96,8 +98,10 @@ public class T4 {
 		// System.out.println(indexOf(array, "i")); //10
 		// System.out.println(indexOf(array, "j")); //11
 
+		System.out.println("---------------------------");
+
 		int[] arr = { -3, -1, 1, 3 };
-		System.out.println(indexOf(arr, -4)); // -1
+		System.out.println(indexOf(arr, -10)); // -1
 		System.out.println(indexOf(arr, -3)); // 0
 		System.out.println(indexOf(arr, -2)); // -2
 		System.out.println(indexOf(arr, -1)); // 1
@@ -106,8 +110,5 @@ public class T4 {
 		System.out.println(indexOf(arr, 2)); // -4
 		System.out.println(indexOf(arr, 3)); // 3
 		System.out.println(indexOf(arr, 4)); // -5
-		// System.out.println(indexOf(arr, 5)); // 5
-		// System.out.println(indexOf(arr, 6)); // -6
-		// System.out.println(indexOf(arr, 7)); // -6
 	}
 }
